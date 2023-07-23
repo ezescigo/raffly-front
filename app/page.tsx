@@ -2,17 +2,23 @@ import Image from "next/image"
 import styles from "./page.module.css"
 import { Header } from "@/components/Header"
 import { LotteryEntrance } from "@/components/LotteryEntrance"
+import ChakraCarousel from "@/components/Carousel"
 
 export default function Home() {
     return (
         <main className={styles.main}>
             <Header />
 
-            <div className={styles.center}>
-                <LotteryEntrance></LotteryEntrance>
-            </div>
+            {/* <div className={styles.center}> */}
+            <ChakraCarousel gap={32}>
+                <LotteryEntrance key={1}></LotteryEntrance>
+                <LotteryEntrance key={2}></LotteryEntrance>
+                <LotteryEntrance key={3}></LotteryEntrance>
+                <LotteryEntrance key={4}></LotteryEntrance>
+            </ChakraCarousel>
+            {/* </div> */}
 
-            <div className={styles.grid}>
+            {/* <div className={styles.grid}>
                 <a
                     href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
                     className={styles.card}
@@ -60,7 +66,7 @@ export default function Home() {
                     </h2>
                     <p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
                 </a>
-            </div>
+            </div> */}
         </main>
     )
 }

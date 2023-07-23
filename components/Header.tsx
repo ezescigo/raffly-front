@@ -13,18 +13,6 @@ export const Header = () => {
                     <Box>Raffly</Box>
                 </HStack>
 
-                <HStack as="nav" spacing="5">
-                    {/* {data.map((item, i) => (
-                        <Link key={i}>
-                            <Button variant="nav"> {item.label} </Button>
-                        </Link>
-                    ))} */}
-                    <Link href={"/"}>
-                        <Button variant="nav">About</Button>
-                        <Button variant="nav">How it works</Button>
-                        <Button variant="nav">Contact us</Button>
-                    </Link>
-                </HStack>
                 <HStack>
                     <ConnectButton />
                 </HStack>
@@ -32,3 +20,16 @@ export const Header = () => {
         </chakra.header>
     )
 }
+
+//  <HStack as="nav" spacing="5">
+//                     {/* {data.map((item, i) => (
+//                         <Link key={i}>
+//                             <Button variant="nav"> {item.label} </Button>
+//                         </Link>
+//                     ))} */}
+//                     <Link href={"/"}>
+//                         <Button variant="nav">About</Button>
+//                         <Button variant="nav">How it works</Button>
+//                         <Button variant="nav">Contact us</Button>
+//                     </Link>
+//                 </HStack>
