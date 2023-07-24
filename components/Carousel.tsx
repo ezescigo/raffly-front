@@ -4,7 +4,16 @@
 
 import React, { useLayoutEffect, useCallback, useEffect, useState, useMemo, useRef } from "react"
 
-import { useMediaQuery, useTheme, Progress, VStack, Button, Flex, Box } from "@chakra-ui/react"
+import {
+    useMediaQuery,
+    useTheme,
+    Progress,
+    VStack,
+    Button,
+    Flex,
+    Box,
+    HStack,
+} from "@chakra-ui/react"
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
 
 import { motion, useAnimation, useMotionValue } from "framer-motion"
@@ -142,38 +151,7 @@ const Slider = ({
 
     return (
         <>
-            <Box
-                ref={ref}
-                w={{ base: "100%", md: `calc(100% + ${gap}px)` }}
-                ml={{ base: 0, md: `-${gap / 2}px` }}
-                px={`${gap / 2}px`}
-                position="relative"
-                overflow="hidden"
-                _before={{
-                    bgGradient: "linear(to-r, base.d400, transparent)",
-                    position: "absolute",
-                    w: `${gap / 2}px`,
-                    content: "''",
-                    zIndex: 1,
-                    h: "100%",
-                    left: 0,
-                    top: 0,
-                }}
-                _after={{
-                    bgGradient: "linear(to-l, base.d400, transparent)",
-                    position: "absolute",
-                    w: `${gap / 2}px`,
-                    content: "''",
-                    zIndex: 1,
-                    h: "100%",
-                    right: 0,
-                    top: 0,
-                }}
-            >
-                {children}
-            </Box>
-
-            <Flex w={`${itemWidth}px`} mt={`${gap / 2}px`} mx="auto">
+            <HStack h={"100hv"} overflow={"visible"}>
                 <Button
                     onClick={handleDecrementClick}
                     onFocus={handleFocus}
@@ -184,6 +162,58 @@ const Slider = ({
                 >
                     <ChevronLeftIcon boxSize={9} />
                 </Button>
+                <Box
+                    ref={ref}
+                    w={{ base: "100%", md: `calc(100% + ${gap}px)` }}
+                    ml={{ base: 0, md: `-${gap / 2}px` }}
+                    px={`${gap / 2}px`}
+                    position="relative"
+                    overflowY="visible"
+                    overflowX={"hidden"}
+                    _before={{
+                        bgGradient: "linear(to-r, base.d400, transparent)",
+                        position: "absolute",
+                        w: `${gap / 2}px`,
+                        content: "''",
+                        zIndex: 1,
+                        h: "100%",
+                        left: 0,
+                        top: 0,
+                    }}
+                    _after={{
+                        bgGradient: "linear(to-l, base.d400, transparent)",
+                        position: "absolute",
+                        w: `${gap / 2}px`,
+                        content: "''",
+                        zIndex: 1,
+                        h: "100%",
+                        right: 0,
+                        top: 0,
+                    }}
+                >
+                    {children}
+                </Box>
+                <Button
+                    onClick={handleIncrementClick}
+                    onFocus={handleFocus}
+                    ml={`${gap / 3}px`}
+                    color="gray.200"
+                    variant="link"
+                    zIndex={2}
+                    minW={0}
+                >
+                    <ChevronRightIcon boxSize={9} />
+                </Button>
+            </HStack>
+
+            {/* <Flex
+                w={`${itemWidth}px`}
+                // mt={`${gap / 2}px`}
+                mt="30px"
+                mx="auto"
+                backgroundColor={"transparent"}
+            >
+                
 
                 <Progress
                     value={percentage(activeItem, positions.length - constraint)}
@@ -199,18 +229,8 @@ const Slider = ({
                     }}
                 />
 
-                <Button
-                    onClick={handleIncrementClick}
-                    onFocus={handleFocus}
-                    ml={`${gap / 3}px`}
-                    color="gray.200"
-                    variant="link"
-                    zIndex={2}
-                    minW={0}
-                >
-                    <ChevronRightIcon boxSize={9} />
-                </Button>
-            </Flex>
+                
+            </Flex> */}
         </>
     )
 }

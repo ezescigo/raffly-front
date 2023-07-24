@@ -17,6 +17,7 @@ interface CardProps {
     children: any
     disableAction: boolean
     image: any
+    isLoading: boolean
     numPlayers?: string
     entranceFee?: string
     onClickEntry: () => void
@@ -27,6 +28,7 @@ export const Card: React.FC<CardProps> = ({
     onClickEntry,
     disableAction,
     image,
+    isLoading,
     numPlayers = "0",
     entranceFee = "0.1 ETH",
 }) => {
@@ -42,7 +44,9 @@ export const Card: React.FC<CardProps> = ({
             padding={"40px"}
             // variant="with-shadow"
             sx={{
-                boxShadow: "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px",
+                boxShadow:
+                    "rgba(153, 167, 219, 0.15) 0px 14px 28px, rgba(153, 167, 219, 0.18) 0px 10px 10px ",
+                // boxShadow: "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px",
             }}
         >
             {/* <CardBody>{children}</CardBody> */}
@@ -74,6 +78,7 @@ export const Card: React.FC<CardProps> = ({
                     variant="terciary"
                     onClick={onClickEntry}
                     disabled={disableAction}
+                    isLoading={isLoading}
                     className="button-hover-effect"
                 >
                     Entry Raffle

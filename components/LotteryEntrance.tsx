@@ -1,6 +1,6 @@
 "use client"
 
-import { Box, Button, Image, Img } from "@chakra-ui/react"
+import { Box, Button, Container, Image, Img } from "@chakra-ui/react"
 import { useWeb3Contract, useMoralis } from "react-moralis"
 import { abi, contractAddresses } from "../constants"
 import { useEffect, useState } from "react"
@@ -18,6 +18,7 @@ export const LotteryEntrance = () => {
     const [entranceFee, setEntranceFee] = useState<BigNumber | null>(null)
     const [numberPlayers, setNumberPlayers] = useState<string | null>(null)
     const [recentWinner, setRecentWinner] = useState<string | null>(null)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const chainId = chainIdHex ? parseInt(chainIdHex) : 0
     const raffleAddress = ((chainId in contractAddresses) as any)
@@ -57,6 +58,7 @@ export const LotteryEntrance = () => {
 
     const handleSuccess = async (tx: any) => {
         await tx.wait(1)
+        setIsLoading(false)
         updateUI()
         handleNewNotification(tx)
     }
@@ -71,9 +73,13 @@ export const LotteryEntrance = () => {
     }
 
     const handleClick = async () => {
+        setIsLoading(true)
         await enterRaffle({
             onSuccess: handleSuccess,
-            onError: (e) => console.log(e),
+            onError: (e) => {
+                setIsLoading(false)
+                console.log(e)
+            },
         })
     }
 
@@ -96,31 +102,34 @@ export const LotteryEntrance = () => {
     }, [isWeb3Enabled])
 
     return (
-        <Card
-            onClickEntry={handleClick}
-            disableAction={!raffleAddress}
-            image={
-                <Img
-                    src="/assets/images/raffle-icon-green.png"
-                    alt="Raffle ticket image"
-                    borderRadius="lg"
-                    width="50%"
-                />
-            }
-        >
-            <>
-                <Box></Box>
-                {numberPlayers ? (
-                    <div>there are already {numberPlayers} participants playing!!</div>
-                ) : null}
-                {entranceFee ? (
-                    <div>
-                        Entrance Fee: {ethers.formatUnits(entranceFee.toString(), "ether")} ETH
-                    </div>
-                ) : null}
-                {recentWinner ? <div>Last winner was: {recentWinner}</div> : null}
-                {/* {raffleAddress ? <Button onClick={handleClick}>Entry Raffle!</Button> : null} */}
-            </>
-        </Card>
+        <Container minH={"550px"}>
+            <Card
+                isLoading={isLoading}
+                onClickEntry={handleClick}
+                disableAction={!raffleAddress}
+                image={
+                    <Img
+                        src="/assets/images/raffle-icon-green.png"
+                        alt="Raffle ticket image"
+                        borderRadius="lg"
+                        width="50%"
+                    />
+                }
+            >
+                <>
+                    <Box></Box>
+                    {numberPlayers ? (
+                        <div>there are already {numberPlayers} participants playing!!</div>
+                    ) : null}
+                    {entranceFee ? (
+                        <div>
+                            Entrance Fee: {ethers.formatUnits(entranceFee.toString(), "ether")} ETH
+                        </div>
+                    ) : null}
+                    {recentWinner ? <div>Last winner was: {recentWinner}</div> : null}
+                    {/* {raffleAddress ? <Button onClick={handleClick}>Entry Raffle!</Button> : null} */}
+                </>
+            </Card>
+        </Container>
     )
 }
