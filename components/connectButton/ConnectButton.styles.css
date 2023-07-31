@@ -1,0 +1,11 @@
+#connect-button button {
+    background-color: rgb(136, 83, 163);
+}
+
+#connect-button span {
+    color: rgb(218, 195, 228);
+}
+
+#connect-button hover {
+    background-color: rgb(67, 20, 90);
+}

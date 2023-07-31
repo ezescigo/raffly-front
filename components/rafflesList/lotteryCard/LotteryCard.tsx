@@ -2,17 +2,17 @@
 
 import { Box, Button, Container, Image, Img } from "@chakra-ui/react"
 import { useWeb3Contract, useMoralis } from "react-moralis"
-import { abi, contractAddresses } from "../constants"
+import { abi, contractAddresses } from "../../../constants"
 import { useEffect, useState } from "react"
 import { ethers, BigNumberish } from "ethers"
 import { BigNumber } from "moralis/common-core"
 import { useNotification } from "web3uikit"
-import { Card } from "./Card"
+import { Card } from "../../Card"
 
 import source from "../public/assets/images/raffle-ticket.jpeg"
 // import { BigNumberish } from "moralis/common-core"
 
-export const LotteryEntrance = () => {
+export const LotteryCard = () => {
     const { chainId: chainIdHex, isWeb3Enabled } = useMoralis()
     const dispatch = useNotification()
     const [entranceFee, setEntranceFee] = useState<BigNumber | null>(null)
@@ -25,8 +25,8 @@ export const LotteryEntrance = () => {
         ? contractAddresses[chainId.toString()][0]
         : null
 
-    console.log(chainId)
-    console.log(raffleAddress)
+    // console.log(chainId)
+    // console.log(raffleAddress)
     const { runContractFunction: enterRaffle } = useWeb3Contract({
         abi,
         contractAddress: raffleAddress,

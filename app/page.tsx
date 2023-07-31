@@ -1,25 +1,18 @@
 import Image from "next/image"
 import styles from "./page.module.css"
 import { Header } from "@/components/Header"
-import { LotteryEntrance } from "@/components/LotteryEntrance"
-import ChakraCarousel from "@/components/Carousel"
+
 import { Box, Center, Container } from "@chakra-ui/react"
+import { Title } from "@/components/Title"
+import { RaffleList } from "@/components/rafflesList/RafflesList"
 
 export default function Home() {
     return (
-        <main className={styles.main}>
-            {/* <main> */}
+        <main className={styles.main} style={{ backgroundColor: "#FFE197" }}>
             <Header />
-
-            {/* <div className={styles.center}> */}
             <div className={styles.center}>
-                <ChakraCarousel gap={32}>
-                    <LotteryEntrance key={1}></LotteryEntrance>
-                    <LotteryEntrance key={2}></LotteryEntrance>
-                    <LotteryEntrance key={3}></LotteryEntrance>
-                    <LotteryEntrance key={4}></LotteryEntrance>
-                </ChakraCarousel>
-
+                <Title title="start having fun!" subtitle="Join your favourite Raffle!" />
+                <RaffleList />
                 <div>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab quae maiores et
                     doloribus pariatur tempore aut aliquid similique eveniet sint, recusandae

@@ -1,16 +1,33 @@
 "use client"
 
-import { Flex, Heading, Spacer, ButtonGroup, Button, Box, chakra, HStack } from "@chakra-ui/react"
+import {
+    Flex,
+    Heading,
+    Spacer,
+    ButtonGroup,
+    Button,
+    Box,
+    chakra,
+    HStack,
+    useTheme,
+    Img,
+    Image,
+} from "@chakra-ui/react"
 import Link from "next/link"
-import { ConnectButton } from "web3uikit"
+import logo from "../public/assets/images/logo.jpeg"
+import { ConnectButton } from "./connectButton/ConnectButton"
 
 export const Header = () => {
+    const theme = useTheme()
+
     return (
         <chakra.header id="header">
-            <Flex w="100%" px="6" py="5" align="center" justify="space-between">
+            <Flex bgColor="primary" w="100%" px="6" py="5" align="center" justify="space-between">
                 {/* <Image src={Logo.src} h="50px" /> */}
                 <HStack>
-                    <Box>Raffly</Box>
+                    <Box w="180px" h="78px" boxShadow={"2xl"}>
+                        <Image src="/logo.jpeg" fit={"contain"} alt="raffle-logo" />
+                    </Box>
                 </HStack>
 
                 <HStack>

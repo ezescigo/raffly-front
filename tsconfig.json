@@ -29,7 +29,8 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "constants/index.ts"
+        "constants/index.ts",
+        "components/rafflesList/carousel/Carousel.js"
     ],
     "exclude": ["node_modules"]
 }
