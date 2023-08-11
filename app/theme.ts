@@ -15,8 +15,9 @@ export const customTheme = extendTheme({
         terciaryDark: "#16A2A7",
     },
     fonts: {
-        body: "Roboto Mono",
-        heading: "Roboto Mono",
+        body: `'Open Sans', sans-serif`,
+        // heading: "Roboto Mono",
+        heading: `'Open Sans', sans-serif`,
     },
     // space: {
     //     px: "1px",
@@ -58,7 +59,7 @@ export const customTheme = extendTheme({
         Card,
         Text: {
             baseStyle: {
-                fontFamily: "Roboto Mono",
+                fontFamily: `'Open Sans', sans-serif`,
                 fontWeight: "normal",
                 lineHeight: "tall",
                 color: "inherit",
