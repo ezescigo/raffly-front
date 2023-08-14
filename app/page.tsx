@@ -10,6 +10,8 @@ import { ParticipateSection } from "@/components/sections/participate/Participat
 import { Title } from "@/components/sections/title/Title"
 import { CreateSection } from "@/components/sections/create/createSection"
 import { AboutSection } from "@/components/sections/about/aboutSection"
+import { FaqSection } from "@/components/sections/faqs/faqSection"
+import { FooterSection } from "@/components/sections/footer/footer"
 
 export default function Home() {
     return (
@@ -22,6 +24,10 @@ export default function Home() {
                 <CreateSection />
             </div>
             <AboutSection />
+            <div className={styles.center}>
+                <FaqSection />
+            </div>
+            <FooterSection />
         </main>
     )
 }

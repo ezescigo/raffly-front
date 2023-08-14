@@ -54,7 +54,7 @@ export const Header = () => {
                         </Link>
                     </Box>
                     <Box>
-                        <Link href="/#about-us">
+                        <Link href="/#team">
                             <Heading size="lg">ABOUT US</Heading>
                         </Link>
                     </Box>
