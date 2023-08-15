@@ -2,14 +2,14 @@
 
 import { Box, Button, Container, Image, Img } from "@chakra-ui/react"
 import { useWeb3Contract, useMoralis } from "react-moralis"
-import { abi, contractAddresses } from "../../../constants"
+import { abi, contractAddresses } from "../../../../constants"
 import { useEffect, useState } from "react"
 import { ethers, BigNumberish } from "ethers"
 import { BigNumber } from "moralis/common-core"
 import { useNotification } from "web3uikit"
-import { Card } from "../../Card"
 
 import source from "../public/assets/images/raffle-ticket.jpeg"
+import { Card } from "@/components/Card"
 // import { BigNumberish } from "moralis/common-core"
 
 export const LotteryCard = () => {

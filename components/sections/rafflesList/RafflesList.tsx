@@ -1,13 +1,25 @@
 "use client"
 
 import { Box, Container, Flex, Img, useTheme } from "@chakra-ui/react"
-import { RafflePreview } from "./rafflePreview/RafflePreview"
+import { RaffleInfo, RafflePreview } from "./rafflePreview/RafflePreview"
 import ChakraCarousel from "./carousel/Carousel"
 import { data } from "./data"
 import { useState } from "react"
+import { useRaffle } from "./RafflesList.hooks"
 
 export const RaffleList: React.FC<{}> = () => {
     const [selectedRaffle, setSelectedRaffle] = useState<number>(1)
+
+    const {
+        entranceFee,
+        pot,
+        numberPlayers,
+        state,
+        isLoading,
+        onEnterRaffle,
+        userParticipations,
+        endTimestamp,
+    } = useRaffle()
 
     const title = data.find((item) => item.id === selectedRaffle)?.title ?? ""
     const subtitle = data.find((item) => item.id === selectedRaffle)?.subtitle ?? ""
@@ -46,14 +58,25 @@ export const RaffleList: React.FC<{}> = () => {
 
     // const theme = useTheme()
 
+    const raffle: RaffleInfo = {
+        balance: pot,
+        entranceFee: entranceFee,
+        players: numberPlayers,
+        state,
+        userParticipations,
+        endTimestamp,
+    }
+
     return (
         <Box w="100%">
             <RafflePreview
-                onClick={() => {}}
+                onClick={onEnterRaffle}
                 raffleIdx={selectedRaffle}
                 title={title}
                 subtitle={subtitle}
                 textColor={textColor}
+                raffle={raffle}
+                isLoading={isLoading}
             />
             <Container
                 py={8}
